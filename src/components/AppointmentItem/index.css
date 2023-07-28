@@ -1,5 +1,13 @@
 .list-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid grey;
   border-width: 5px;
   border-radius: 5px;
+  margin: 20px;
+  padding: 10px;
+}
+.star {
+  align-self: flex-start;
 }
