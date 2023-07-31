@@ -25,7 +25,7 @@ class Appointments extends Component {
     const {appointmentsList} = this.state
     const filteredList = appointmentsList.map(each => {
       if (each.id === id) {
-        return {...each.isFavorite, isFavorite: !each.isFavorite}
+        return {...each, isFavorite: !each.isFavorite}
       }
       return each
     })
@@ -35,6 +35,8 @@ class Appointments extends Component {
   }
 
   onStarred = () => {
+    const {appointmentsList} = this.state
+    const starredList = appointmentsList.filter(each => each.isFavorite)
     this.setState(prevState => ({isActive: !prevState.isActive}))
   }
 
@@ -111,7 +113,6 @@ class Appointments extends Component {
                       key={each.id}
                       appointmentDetails={each}
                       changeStar={this.changeStar}
-                      isActive={this.isActive}
                     />
                   ))}
                 </ul>

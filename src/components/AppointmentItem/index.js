@@ -1,7 +1,7 @@
 import './index.css'
 
 const AppointmentItem = props => {
-  const {appointmentDetails, changeStar, isActive} = props
+  const {appointmentDetails, changeStar} = props
   const {title, id, date, isFavorite} = appointmentDetails
 
   const starImg = isFavorite
@@ -13,28 +13,16 @@ const AppointmentItem = props => {
   }
 
   return (
-    <li className="list-container">
-      {isActive ? (
+    <li>
+      <div className="list-container">
         <div>
-          <div>
-            <h1>{title}</h1>
-            <p>{date}</p>
-          </div>
-          <button type="button" onClick={onChangeStar} className="star">
-            <img src={starImg} alt="star" />
-          </button>
+          <h1>{title}</h1>
+          <p>{date}</p>
         </div>
-      ) : (
-        <div>
-          <div>
-            <h1>{title}</h1>
-            <p>{date}</p>
-          </div>
-          <button type="button" onClick={onChangeStar} className="star">
-            <img src={starImg} alt="star" />
-          </button>
-        </div>
-      )}
+        <button type="button" onClick={onChangeStar} className="star">
+          <img src={starImg} alt="star" />
+        </button>
+      </div>
     </li>
   )
 }
