@@ -35,9 +35,21 @@ class Appointments extends Component {
   }
 
   onStarred = () => {
-    const {appointmentsList} = this.state
-    const starredList = appointmentsList.filter(each => each.isFavorite)
-    this.setState(prevState => ({isActive: !prevState.isActive}))
+    const {appointmentsList, isActive} = this.state
+    const starredList = appointmentsList.filter(
+      each => each.isFavorite === true,
+    )
+    if (isActive === true) {
+      this.setState(prevState => ({
+        appointmentsList,
+        isActive: !prevState.isActive,
+      }))
+    } else {
+      this.setState(prevState => ({
+        appointmentsList: starredList,
+        isActive: !prevState.isActive,
+      }))
+    }
   }
 
   onAddButton = event => {
@@ -76,7 +88,6 @@ class Appointments extends Component {
               <label htmlFor="Date">DATE</label>
               <input
                 type="date"
-                placeholder="dd/mm/yyyy"
                 onChange={this.onChangeDate}
                 className="Date"
                 value={date}

@@ -1,3 +1,4 @@
+import {format} from 'date-fns'
 import './index.css'
 
 const AppointmentItem = props => {
@@ -17,9 +18,14 @@ const AppointmentItem = props => {
       <div className="list-container">
         <div>
           <h1>{title}</h1>
-          <p>{date}</p>
+          <p>Date: {format(new Date(date), 'dd MMMM yyyy, EEEE')}</p>
         </div>
-        <button type="button" onClick={onChangeStar} className="star">
+        <button
+          type="button"
+          onClick={onChangeStar}
+          className="star"
+          data-testid="star"
+        >
           <img src={starImg} alt="star" />
         </button>
       </div>
